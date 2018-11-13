@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "pretty": true,
     "baseUrl": ".",
     "types": [
       "webpack-env",
@@ -22,6 +23,10 @@
       ]
     },
     "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "es2015.promise",
       "esnext",
       "dom",
       "dom.iterable",

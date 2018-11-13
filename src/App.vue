@@ -1,29 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app" :class="theme">
+        <s-header></s-header>
+        <div class="s-main clearfix">
+            <s-left-menu :menus.sync="menus"></s-left-menu>
+            <router-view class="s-container"/>
+        </div>
     </div>
-    <router-view/>
-  </div>
 </template>
+<script lang="ts">
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { SHeader, SLeftMenu } from './components/index'
+import mixin from './mixins'
+@Component({
+	components: { SHeader, SLeftMenu },
+	mixins: [mixin]
+})
+export default class App extends Vue {
+	menus: Array<Object> = [
+		{ name: 'Home', to: '/' },
+		{ name: 'About', to: '/about' }
+	]
+	@Watch('$route', { immediate: true, deep: true })
+	$routeChange(to: any, from: any) {
+		console.log('enter the ' + to.name + 'page')
+	}
+	created() {
+		console.log(this.$store.getters.userInfo)
+	}
+}
+</script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import './assets/css/app.scss';
+* {
+	padding: 0;
+	margin: 0;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+#app {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
 }
 </style>

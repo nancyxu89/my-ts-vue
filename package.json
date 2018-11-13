@@ -2,10 +2,13 @@
   "name": "my-ts-vue",
   "version": "0.1.0",
   "private": true,
+  "owner": "xyy",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "eslint-fix": "eslint src/**/**/*.vue --fix",
+    "format-code": "prettier-eslint --write \"src/**/*.ts\" \"src/**/**/*.scss\" \"src/**/*.vue\" \"*.config.js\" \".eslintrc.js\"",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -28,9 +31,13 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
+    "element-ui": "^2.4.9",
     "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "node-sass": "^4.9.0",
+    "prettier-eslint-cli": "^4.7.1",
     "sass-loader": "^7.0.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
